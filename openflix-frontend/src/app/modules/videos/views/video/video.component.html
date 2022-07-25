@@ -1,0 +1,22 @@
+<app-default-layout>
+    <div class="pb-5">
+        <video #target class="vjs-custom-skin video-js" controls preload="auto"></video>
+        <div class="mx-5 mt-2">
+            <h2 class="fs-4 mb-0">{{ serie.title }}</h2>
+            <div class="fs-6 text-muted mb-2">{{ serie.author }}</div>
+            <button 
+                *ngIf="!isFavorite; else removeFavoriteButton"
+                class="btn btn-primary"
+                (click)="onFavoriteButtonClick()">
+                <i class="fa fa-plus"></i> Adicionar à Minha Lista
+            </button>
+            <ng-template #removeFavoriteButton>
+                <button 
+                    class="btn btn-danger"
+                    (click)="onFavoriteButtonClick()">
+                    <i class="fa fa-remove"></i> Remover da Minha Lista
+                </button>
+            </ng-template>
+        </div>
+    </div>
+</app-default-layout>

@@ -1,0 +1,11 @@
+<app-default-layout>
+    <div class="mx-5 mt-4">
+        <h2 class="fs-5">Minha Lista</h2>
+    </div>
+    <div class="mt-2 mx-5 d-flex flex-wrap">
+        <app-video-card
+            *ngFor="let serie of series"
+            [serie]="serie">
+        </app-video-card>
+    </div>
+</app-default-layout>

@@ -1,0 +1,17 @@
+<app-default-layout>
+    <div class="container py-5 h-100 d-flex flex-column align-items-center justify-content-center gap-3">
+        <h2 class="fs-5">Selecione um perfil</h2>
+        <div class="d-flex flex-wrap mx-1 justify-content-evenly gap-3">
+            <app-profile-image 
+                *ngFor="let profile of profiles"
+                (click)="selectProfile(profile)"
+                [showActions]="true"
+                [name]="profile.name"
+                [imageUrl]="profile.profileImage.imageName | apiImage"
+                (editClick)="onEditProfile(profile)"
+                (deleteClick)="onDeleteProfile(profile)">
+            </app-profile-image>
+            <app-add-component-button (click)="onAddProfileClick()"></app-add-component-button>
+        </div>
+    </div>
+</app-default-layout>

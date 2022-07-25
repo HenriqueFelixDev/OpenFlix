@@ -1,0 +1,55 @@
+<app-default-layout>
+    <div *ngIf="!selectImage; else selectImageTemplate" class="min-h-100 d-flex justify-content-center align-items-center">
+        <form [formGroup]="profileForm" class="d-flex flex-column gap-3 justify-content-center align-items-center">
+            <h2 class="fs-5 mb-0">Editar Perfil</h2>
+            <div class="profile-photo-button" (click)="onSelectPhotoClick()">
+                <app-profile-image 
+                    [imageUrl]="profileImage | apiImage : '/assets/images/avatar-default.jpg'">
+                </app-profile-image>
+                <div class="profile-photo-button__overlay">
+                    <i class="fa fa-camera fa-lg"></i>
+                </div>
+            </div>
+            <div *ngIf="getControlError('image', 'required')" class="invalid-feedback">
+                Imagem de perfil obrigatória
+            </div>
+            <div>
+                <input 
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    formControlName="name"
+                    [class.is-invalid]="controlIsInvalid('name')"
+                    placeholder="Nome do Perfil" />
+                <div *ngIf="getControlError('name', 'required')" class="invalid-feedback">
+                    Nome obrigatório
+                </div>
+                <div *ngIf="getControlError('name', 'minlength')" class="invalid-feedback">
+                    O nome precisa ter pelo menos {{ getControlError('name', 'minlength')?.['requiredLength'] }} caracteres
+                </div>
+                <div *ngIf="getControlError('name', 'maxlength')" class="invalid-feedback">
+                    O nome deve ter no máximo {{ getControlError('name', 'maxlength')?.['requiredLength'] }} caracteres
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2 w-100">
+                <a routerLink="/selecionar-perfil" class="link-on-primary text-center text-decoration-none flex-fill">
+                    Cancelar
+                </a>
+                <button 
+                    type="button"
+                    [disabled]="profileForm.invalid"
+                    class="btn btn-primary flex-fill"
+                    (click)="onSaveClick()">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <ng-template #selectImageTemplate>
+        <app-select-profile-image 
+            (onChooseImage)="selectProfileImage($event)"
+            (onCancel)="cancelSelectImage()">
+        </app-select-profile-image>
+    </ng-template>
+</app-default-layout>

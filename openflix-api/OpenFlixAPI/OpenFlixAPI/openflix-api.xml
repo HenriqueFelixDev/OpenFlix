@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenFlixAPI</name>
+    </assembly>
+    <members>
+        <member name="T:OpenFlixAPI.Controllers.AuthController">
+            <summary>
+            Manipula as requisições de autenticação e criação de usuários
+            </summary>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.AuthController.Login(System.String)">
+            <summary>
+            Realiza a autenticação do usuário
+            </summary>
+            <returns>Retorna o token de autenticação do usuário (JWT)</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.AuthController.SignUp(OpenFlixAPI.Domain.Models.Users.UserSignUp)">
+            <summary>
+            Cria um novo usuário e realiza a sua autenticação
+            </summary>
+            <param name="userSignUp"></param>
+            <returns>Retorna o token de autenticação do usuário</returns>
+        </member>
+        <member name="T:OpenFlixAPI.Controllers.CategoryController">
+            <summary>
+            Manipula as Requisições relacionadas às categorias dos vídeos
+            </summary>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.CategoryController.GetCategories">
+            <summary>
+            Lista com as categorias cadastradas
+            </summary>
+            <returns>Retorna uma lista de categorias</returns>
+        </member>
+        <member name="T:OpenFlixAPI.Controllers.FavoriteController">
+            <summary>
+            Manipula as requisições relacionadas aos vídeos favoritos dos usuários
+            </summary>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.FavoriteController.GetProfileFavorites(System.Int32)">
+            <summary>
+            Lista de séries favoritas do perfil
+            </summary>
+            <param name="profileId">ID do perfil logado do usuário</param>
+            <returns>Retorna a lista de séries favoritas do perfil</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.FavoriteController.AddSerieToFavorites(System.Int32,System.Int32)">
+            <summary>
+            Adiciona uma série aos favoritos do perfil
+            </summary>
+            <param name="serieId">ID da série a ser adicionada aos favoritos</param>
+            <param name="profileId">ID do perfil logado do usuário</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.FavoriteController.RemoveSerieFromFavorites(System.Int32,System.Int32)">
+            <summary>
+            Remove uma série dos favoritos do perfil
+            </summary>
+            <param name="serieId">ID da série a ser adicionada aos favoritos</param>
+            <param name="profileId">ID do perfil logado do usuário</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenFlixAPI.Controllers.ProfileController">
+            <summary>
+            Manipula as requisições relacionadas aos perfis dos usuários
+            </summary>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.ProfileController.GetProfiles">
+            <summary>
+            Lista de perfis do usuário
+            </summary>
+            <returns>Retorna a lista de perfis do usuário</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.ProfileController.CreateProfile(OpenFlixAPI.Domain.Models.Profiles.ProfileRequest)">
+            <summary>
+            Cria um novo perfil para o usuário e sua respectiva lista de favoritos
+            </summary>
+            <param name="profileRequest">Dados do novo perfil</param>
+            <returns>Retorna o perfil criado</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.ProfileController.GetProfileById(System.Int32)">
+            <summary>
+            Dados do perfil
+            </summary>
+            <param name="id">ID do perfil</param>
+            <returns>Retorna os dados do perfil procurado</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.ProfileController.DeleteProfile(System.Int32)">
+            <summary>
+            Deleta um perfil do usuário
+            </summary>
+            <param name="profileId">ID do perfil a ser deletado</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.ProfileController.UpdateProfile(System.Int32,OpenFlixAPI.Domain.Models.Profiles.ProfileRequest)">
+            <summary>
+            Atualiza o perfil do usuário
+            </summary>
+            <param name="profileId">ID do perfil a ser atualizado</param>
+            <param name="profileRequest">Novos dados do perfil</param>
+            <returns>Retorna o perfil atualizado</returns>
+        </member>
+        <member name="T:OpenFlixAPI.Controllers.ProfileImagesController">
+            <summary>
+            Manipula as requisições relacionadas às imagens de perfil dos usuários
+            </summary>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.ProfileImagesController.GetProfileImages">
+            <summary>
+            Lista de imagens de perfil
+            </summary>
+            <returns>Retorna a lista de imagens de perfil cadastradas</returns>
+        </member>
+        <member name="T:OpenFlixAPI.Controllers.VideoController">
+            <summary>
+            Manipula as requisições relacionadas aos vídeos
+            </summary>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.VideoController.SearchVideos(System.String)">
+            <summary>
+            Consulta de séries e vídeos
+            </summary>
+            <param name="search">Termo de pesquisa</param>
+            <returns>Retorna a lista de séries que satisfazem a consulta</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.VideoController.GetSerieById(System.Int32)">
+            <summary>
+            Obtém os dados de uma série
+            </summary>
+            <param name="serieId">ID da série</param>
+            <returns>Dados da série procurada</returns>
+        </member>
+        <member name="M:OpenFlixAPI.Controllers.VideoController.GetHomeVideos">
+            <summary>
+            Lista de séries organizadas por categoria
+            </summary>
+            <returns>Retorna a lista de séries organizadas por categoria</returns>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Auth.AuthResponse">
+            <summary>
+            Entidade de resposta aos métodos de autenticação (login e signup)
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Auth.AuthResponse.Token">
+            <summary>
+            JWT com os dados do usuário autenticado
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Auth.LoginRequest">
+            <summary>
+            Entidade enviada no request de login
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Auth.LoginRequest.Username">
+            <summary>
+            Nome de usuário cadastrado
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Auth.LoginRequest.Password">
+            <summary>
+            Senha do usuário cadastrado
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Profiles.ProfileImageResponse">
+            <summary>
+            Entidade que a API retorna para as imagens de perfil
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Profiles.ProfileImageResponse.Id">
+            <summary>
+            ID da imagem de perfil
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Profiles.ProfileImageResponse.ImageName">
+            <summary>
+            URL da imagem de perfil
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Profiles.ProfileRequest">
+            <summary>
+            Dados de entrada do perfil
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Profiles.ProfileRequest.Name">
+            <summary>
+            Nome do perfil
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Profiles.ProfileRequest.ImageId">
+            <summary>
+            ID da imagem de perfil
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Profiles.ProfileResponse">
+            <summary>
+            Entidade que a API retorna para os perfis de usuário
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Users.UserSignUp">
+            <summary>
+            Dados de entrada do usuário
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Users.UserSignUp.Username">
+            <summary>
+            Nome de usuário
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Users.UserSignUp.Password">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Users.UserSignUp.Email">
+            <summary>
+            E-mail do usuário
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Videos.CategoryzedVideos">
+            <summary>
+            Entidade que a API retorna os vídeos organizados por categorias
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.CategoryzedVideos.CategoryId">
+            <summary>
+            ID da categoria
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.CategoryzedVideos.CategoryName">
+            <summary>
+            Nome da categoria
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.CategoryzedVideos.Series">
+            <summary>
+            Lista de séries pertencentes à categoria
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.SerieResponse.Id">
+            <summary>
+            ID da série
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.SerieResponse.Title">
+            <summary>
+            Título da série
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.SerieResponse.Banner">
+            <summary>
+            URL da imagem de capa da série
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.SerieResponse.Author">
+            <summary>
+            Autor da série
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.SerieResponse.Category">
+            <summary>
+             Categoria da série
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.SerieResponse.Videos">
+            <summary>
+            Vídeos da série
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Videos.VideoCategoryResponse">
+            <summary>
+            Entidade que a API retorna as categorias das séries
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoCategoryResponse.Id">
+            <summary>
+            ID da categoria
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoCategoryResponse.Name">
+            <summary>
+            Nome da categoria
+            </summary>
+        </member>
+        <member name="T:OpenFlixAPI.Domain.Models.Videos.VideoResponse">
+            <summary>
+            Entidade que a API retorna os vídeos das séries
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoResponse.Id">
+            <summary>
+            ID do vídeo
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoResponse.Title">
+            <summary>
+            Título do vídeo
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoResponse.Banner">
+            <summary>
+            URL da imagem de capa do vídeo
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoResponse.Duration">
+            <summary>
+            Duração (em segundos) do vídeo
+            </summary>
+        </member>
+        <member name="P:OpenFlixAPI.Domain.Models.Videos.VideoResponse.Url">
+            <summary>
+            URL do vídeo
+            </summary>
+        </member>
+    </members>
+</doc>

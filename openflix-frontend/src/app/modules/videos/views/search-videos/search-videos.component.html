@@ -1,0 +1,25 @@
+<app-default-layout>
+    <div class="mx-5 mt-4">
+        <div class="input-group">
+            <input 
+                type="search"
+                name="search"
+                autofocus
+                [(ngModel)]="search"
+                class="form-control bg-transparent text-white border-0 border-bottom rounded-0 shadow-none"
+                placeholder="Pesquise por um vídeo..."  />
+            <button 
+                class="btn btn-outline-on-primary border-0 border-bottom rounded-0 rounded-top shadow-none"
+                (click)="onSearchClick()">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div class="small text-muted mt-2">{{ series.length }} resultado(s) encontrado(s)</div>
+    </div>
+    <div class="mt-2 mx-5 d-flex flex-wrap">
+        <app-video-card
+            *ngFor="let serie of series"
+            [serie]="serie">
+        </app-video-card>
+    </div>
+</app-default-layout>

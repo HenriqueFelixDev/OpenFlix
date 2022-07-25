@@ -1,0 +1,59 @@
+@import '../../../../styles/variables';
+
+.videos-carousel, .videos-carousel__content-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.videos-carousel {
+    overflow: hidden;
+}
+
+.videos-carousel__content {
+    margin: 0 $navigationButtonWidth;
+}
+
+.videos-carousel__videos {
+    display: flex;
+    transition: all .5s ease-out;
+}
+
+// Video Carousel Overlay
+.videos-carousel:hover > .videos-carousel__overlay {
+    opacity: 1;
+}
+
+.videos-carousel__overlay {
+    position: absolute;
+    display: flex;
+    opacity: 0.5;
+    justify-content: space-between;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.videos-carousel__navigation-button {
+    pointer-events: fill;
+    width: $navigationButtonWidth;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: #000000;
+    color: white;
+    border-radius: 3px;
+}
+
+.videos-carousel__navigation-button:hover:not(:disabled) {
+    background: #000000AA;
+}
+
+.videos-carousel__navigation-button:disabled {
+    opacity: 0.1;
+}
+
+.videos-carousel__title {
+    margin: 1rem $navigationButtonWidth;
+    font-size: 1.2rem;
+    font-weight: bold;
+}

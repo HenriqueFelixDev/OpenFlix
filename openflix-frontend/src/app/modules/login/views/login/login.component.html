@@ -1,0 +1,145 @@
+<app-default-layout>
+    <div class="d-flex justify-content-end text-black h-100">
+        <div class="col-12 col-md-6 col-lg-4 bg-white p-5">
+            <div>
+                <h2>Entre</h2>
+                <form [formGroup]="loginForm">
+                    <div class="form-group mb-2">
+                        <input 
+                            type="text"
+                            name="username-login"
+                            formControlName="username"
+                            class="form-control"
+                            [class.is-invalid]="controlIsInvalid(loginForm, 'username')"
+                            placeholder="Usuário" />
+                        <div *ngIf="getControlError(loginForm, 'username', 'required')" class="invalid-feedback">
+                            Nome de usuário obrigatório
+                        </div>
+                        <div *ngIf="getControlError(loginForm, 'username', 'minlength')" class="invalid-feedback">
+                            O nome de usuário deve ter no mínimo {{ getControlError(loginForm, 'username', 'minlength')?.['requiredLength'] }} caracteres
+                        </div>
+                        <div *ngIf="loginForm.get('username')?.errors?.['maxlength']" class="invalid-feedback">
+                            O nome de usuário deve ter no máximo {{ getControlError(loginForm, 'username', 'maxlength')?.['requiredLength'] }} caracteres
+                        </div>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input 
+                            type="password"
+                            name="password-login"
+                            formControlName="password"
+                            class="form-control"
+                            [class.is-invalid]="controlIsInvalid(loginForm, 'password')"
+                            placeholder="Senha" />
+                            <div *ngIf="getControlError(loginForm, 'password', 'required')" class="invalid-feedback">
+                                Senha obrigatória
+                            </div>
+                            <div *ngIf="getControlError(loginForm, 'password', 'minlength')" class="invalid-feedback">
+                                A senha deve ter no mínimo {{ getControlError(loginForm, 'password', 'minlength')?.['requiredLength'] }} caracteres
+                            </div>
+                            <div *ngIf="getControlError(loginForm, 'password', 'maxlength')" class="invalid-feedback">
+                                A senha deve ter no máximo {{ getControlError(loginForm, 'password', 'maxlength')?.['requiredLength'] }} caracteres
+                            </div>
+                    </div>
+                    <button 
+                        type="button" 
+                        class="btn btn-primary w-100"
+                        [disabled]="loginForm.invalid" 
+                        (click)="onLoginClick($event)">
+                        Entrar
+                    </button>
+                </form>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div class="col-5 border border-b-1 my-5"></div>
+                <div class="col-2 text-center">ou</div>
+                <div class="col-5 border border-b-1 my-5"></div>
+            </div>
+
+            <div>
+                <h2>Crie uma Nova Conta</h2>
+                <form [formGroup]="signupForm">
+                    <div class="mb-2">
+                        <input 
+                            type="text" 
+                            name="username-signup" 
+                            class="form-control" 
+                            formControlName="username"
+                            [class.is-invalid]="controlIsInvalid(signupForm, 'username')"
+                            placeholder="Usuário" />
+                        
+                        <div *ngIf="getControlError(signupForm, 'username', 'required')" class="invalid-feedback">
+                            Nome de usuário obrigatório
+                        </div>
+                        <div *ngIf="getControlError(signupForm, 'username', 'minlength')" class="invalid-feedback">
+                            O nome de usuário deve ter no mínimo {{ getControlError(signupForm, 'username', 'minlength')?.['requiredLength'] }} caracteres
+                        </div>
+                        <div *ngIf="signupForm.get('username')?.errors?.['maxlength']" class="invalid-feedback">
+                            O nome de usuário deve ter no máximo {{ getControlError(signupForm, 'username', 'maxlength')?.['requiredLength'] }} caracteres
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <input 
+                            type="email" 
+                            name="email-signup" 
+                            class="form-control" 
+                            formControlName="email"
+                            [class.is-invalid]="controlIsInvalid(signupForm, 'email')"
+                            placeholder="E-mail" />
+                        <div *ngIf="getControlError(signupForm, 'email', 'required')" class="invalid-feedback">
+                            E-mail obrigatório
+                        </div>
+                        <div *ngIf="getControlError(signupForm, 'email', 'email')" class="invalid-feedback">
+                            E-mail inválido
+                        </div>
+                        <div *ngIf="signupForm.get('email')?.errors?.['maxlength']" class="invalid-feedback">
+                            O E-mail deve ter no máximo {{ getControlError(signupForm, 'email', 'maxlength')?.['requiredLength'] }} caracteres
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <input 
+                            type="password" 
+                            name="password-signup" 
+                            class="form-control" 
+                            formControlName="password"
+                            [class.is-invalid]="controlIsInvalid(signupForm, 'password')"
+                            placeholder="Senha" />
+                        <div *ngIf="getControlError(signupForm, 'password', 'required')" class="invalid-feedback">
+                            Senha obrigatória
+                        </div>
+                        <div *ngIf="getControlError(signupForm, 'password', 'minlength')" class="invalid-feedback">
+                            A senha deve ter no mínimo {{ getControlError(signupForm, 'password', 'minlength')?.['requiredLength'] }} caracteres
+                        </div>
+                        <div *ngIf="getControlError(signupForm, 'password', 'maxlength')" class="invalid-feedback">
+                            A senha deve ter no máximo {{ getControlError(signupForm, 'password', 'maxlength')?.['requiredLength'] }} caracteres
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <input 
+                            type="password" 
+                            name="repeat-password-signup" 
+                            class="form-control" 
+                            formControlName="repeatPassword"
+                            [class.is-invalid]="controlIsInvalid(signupForm, 'repeatPassword')"
+                            placeholder="Repita sua Senha" />
+                        <div *ngIf="getControlError(signupForm, 'repeatPassword', 'required')" class="invalid-feedback">
+                            Campo repita sua senha é obrigatório
+                        </div>
+                        <div *ngIf="getControlError(signupForm, 'repeatPassword', 'minlength')" class="invalid-feedback">
+                            O campo repita sua senha deve ter no mínimo {{ getControlError(signupForm, 'repeatPassword', 'minlength')?.['requiredLength'] }} caracteres
+                        </div>
+                        <div *ngIf="getControlError(signupForm, 'repeatPassword', 'maxlength')" class="invalid-feedback">
+                            O campo repita sua senha deve ter no máximo {{ getControlError(signupForm, 'repeatPassword', 'maxlength')?.['requiredLength'] }} caracteres
+                        </div>
+                    </div>
+                    <button type="button"
+                        class="btn btn-outline-primary w-100 mb-4"
+                        [disabled]="signupForm.invalid"
+                        (click)="onSignUpClick($event)">
+                        Criar Nova Conta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</app-default-layout>

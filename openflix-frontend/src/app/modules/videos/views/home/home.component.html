@@ -1,0 +1,9 @@
+<app-default-layout>
+    <div>
+        <app-video-cards-carousel
+            *ngFor="let categoryzedVideo of categoryzedVideos"
+            [categoryName]="categoryzedVideo.categoryName"
+            [videos]="categoryzedVideo.series">
+        </app-video-cards-carousel>
+    </div>
+</app-default-layout>

@@ -1,0 +1,67 @@
+<header class="appbar shadow navbar navbar-dark navbar-expand-md bg-black text-white">
+    <div class="container-fluid mx-2 mx-md-5">
+        <a routerLink="/home" class="navbar-brand">OpenFlix</a>
+        <button 
+            *ngIf="profile"
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Mostrar/Ocultar Menu"
+            >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div 
+            *ngIf="profile"
+            class="collapse navbar-collapse"
+            id="navbarSupportedContent"
+            >
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item me-3 d-grid">
+                    <a routerLink="/pesquisar" class="nav-link my-auto">
+                        <i class="fa fa-search"></i>
+                        <span class="d-inline-block d-md-none ms-2">
+                            Pesquisar
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="profile-menu">
+                        <div class="profile-menu__content">
+                            <div class="profile-menu__photo">
+                                <img class="profile-menu__photo-content" [src]="profile.profileImage.imageName | apiImage : '/assets/images/avatar-default.jpg'" />
+                            </div>
+                            <span>{{ profile.name }}</span>
+                        </div>
+                        <div class="profile-menu__popup">
+                            <ul class="p-0">
+                                <li class="profile-menu__menu-item">
+                                    <a routerLink="/selecionar-perfil" class="profile-menu__menu-link">
+                                        <i class="fa fa-user-circle me-2"></i>
+                                        <span>Trocar de Perfil</span>
+                                    </a>
+                                </li>
+                                <li class="profile-menu__menu-item">
+                                    <a routerLink="/minha-lista" class="profile-menu__menu-link">
+                                        <i class="fa fa-list me-2"></i>
+                                        <span>Minha Lista</span>
+                                    </a>
+                                </li>
+                                <li class="profile-menu__menu-item">
+                                    <button
+                                        class="profile-menu__menu-link"
+                                        (click)="onLogoutClick()">
+                                        <i class="fa fa-sign-out me-2"></i>
+                                        <span>Sair</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

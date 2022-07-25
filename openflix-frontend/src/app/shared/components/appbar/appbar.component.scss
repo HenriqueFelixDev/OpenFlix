@@ -1,0 +1,75 @@
+.appbar {
+    z-index: 10;
+}
+
+.profile-menu {
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-menu__content {
+    align-items: center;
+    display: flex;
+    height: 50px;
+}
+
+.profile-menu__photo {
+    background-color: #cccccc;
+    border-radius: 9999px;
+    height: 35px;
+    width: 35px;
+    margin-right: 0.5rem;
+}
+
+.profile-menu__photo-content {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.profile-menu__menu-item {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.profile-menu__menu-item:hover {
+    background-color: #404040;
+    color: #ccc;
+}
+
+.profile-menu__menu-link {
+    align-items: center;
+    border: none;
+    background: transparent;
+    color: inherit;
+    display: flex;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.profile-menu__menu-link span {
+    flex: 1;
+}
+
+@media (min-width: 768px) {
+    .profile-menu:hover>.profile-menu__popup {
+        display: block;
+        position: absolute;
+        right: 0;
+    }
+
+    .profile-menu__popup {
+        display: none;
+        background-color: black;
+        border-radius: 3px;
+        overflow: hidden;
+        width: 150px;
+    }
+
+    .profile-menu__menu-item {
+        padding: 0.5rem 1rem;
+    }
+}

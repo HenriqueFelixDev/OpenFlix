@@ -1,0 +1,61 @@
+@import "../../../../../styles/variables";
+
+.profile__actions{
+    animation: fade .2s linear;
+}
+
+.profile-image {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.profile-image:hover {
+    opacity: 0.9;
+}
+
+.profile-image__selection-overlay {
+    display: grid;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $primaryColor;
+    opacity: 0.7;
+    animation: fade .2s ease-out;
+}
+
+.profile-image__selection-overlay>* {
+    margin: auto;
+    color: white;
+}
+
+.profile-image__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .profile .profile__actions{
+        opacity: 0;
+    }
+    
+    .profile:hover .profile__actions{
+        opacity: 1;
+        animation: fade .2s linear;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}

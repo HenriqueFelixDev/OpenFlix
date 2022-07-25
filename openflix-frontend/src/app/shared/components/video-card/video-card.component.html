@@ -1,0 +1,35 @@
+<div (click)="onCardClick()" class="video-card">
+        <div class="video-card__thumbnail-wrapper">
+            <img class="video-card__thumbnail" [src]="serie.banner | apiImage" />
+            <div class="video-card__overlay">
+                <div class="video-card__overlay-content">
+                    <button 
+                        *ngIf="!isFavorite; else removeFavoriteButton"
+                        (click)="onFavoriteClick($event)"
+                        class="rounded-circle btn btn-outline-on-primary">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <ng-template #removeFavoriteButton>
+                        <button
+                            (click)="onFavoriteClick($event)"
+                            class="rounded-circle btn btn-outline-danger">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="video-card__info">
+                <div>
+                    {{ serie.videos.length}}
+                    {{ serie.videos.length | i18nPlural : { '=1': 'Episódio', 'other': 'Episódios'} }}
+                </div>
+                <div>&#183;</div>
+                <div>{{ serieDuration }}</div>
+            </div>
+            <h2 class="video-card__title">
+                {{ serie.title }}
+            </h2>
+        </div>
+</div>

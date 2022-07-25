@@ -1,0 +1,27 @@
+<div class="videos-carousel my-4">
+    <h2 class="videos-carousel__title">{{ categoryName }}</h2>
+    <div class="videos-carousel__content-wrapper mb-4">
+        <div class="videos-carousel__overlay">
+            <button 
+                (click)="onLeftClick()"
+                [disabled]="leftButtonDisabled"
+                class="videos-carousel__navigation-button videos-carousel__left-button">
+                    <i class="fa fa-chevron-left"></i>
+            </button>
+            <button
+                (click)="onRightClick()"
+                [disabled]="rightButtonDisabled"
+                class="videos-carousel__navigation-button videos-carousel__right-button">
+                    <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="videos-carousel__content">
+            <div class="videos-carousel__videos" [ngStyle]="{marginLeft: '-'+ currentPage * 100 + '%'}">
+                <app-video-card
+                    *ngFor="let video of videos"
+                    [serie]="video">
+                </app-video-card>
+            </div>
+        </div>
+    </div>
+</div>

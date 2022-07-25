@@ -1,0 +1,23 @@
+<div class="profile text-center">
+    <div class="profile-image rounded-circle border border-2 border-primary overflow-hidden">
+        <img class="profile-image__image" [src]="imageUrl" alt="Imagem de perfil">
+        <div *ngIf="isSelected" class="profile-image__selection-overlay">
+            <i class="fa fa-check fa-2x"></i>
+        </div>
+    </div>
+    <div *ngIf="name" class="mt-2">
+        {{ name }}
+    </div>
+    <div *ngIf="showActions" class="profile__actions mt-2">
+        <button
+            class="btn btn-outline-on-primary rounded-circle me-2"
+            (click)="onEditClick($event)">
+            <i class="fa fa-edit"></i>
+        </button>
+        <button
+            class="btn btn-outline-on-primary rounded-circle"
+            (click)="onDeleteClick($event)">
+            <i class="fa fa-remove"></i>
+        </button>
+    </div>
+</div>
